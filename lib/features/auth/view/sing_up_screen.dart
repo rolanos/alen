@@ -16,70 +16,64 @@ class SingUpScreen extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Container(
-            height: MediaQuery.of(context).size.height -
-                AppBar().preferredSize.height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    width: 40,
-                    margin: const EdgeInsets.only(top: 13.0, right: 16.0),
-                    padding: const EdgeInsets.only(bottom: 4.0),
-                    decoration: const BoxDecoration(
-                        color: ColorsUi.red, shape: BoxShape.circle),
-                    child: Center(
-                      child: Text(
-                        '文',
-                        style: textTheme.titleMedium,
-                      ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  width: 40,
+                  margin: const EdgeInsets.only(top: 13.0, right: 16.0),
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  decoration: const BoxDecoration(
+                      color: ColorsUi.red, shape: BoxShape.circle),
+                  child: Center(
+                    child: Text(
+                      '文',
+                      style: textTheme.titleMedium,
                     ),
                   ),
                 ),
-                const LogoWidget(),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.7,
-                  padding: const EdgeInsets.symmetric(horizontal: 64.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      const InputContainer(titleText: 'Login'),
-                      const InputContainer(titleText: 'Password'),
-                      const InputContainer(titleText: 'Name'),
-                      const InputContainer(titleText: 'Role'),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      ButtonContainer(
-                        text: 'Register',
-                        color: ColorsUi.green,
+              ),
+              const LogoWidget(),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 64.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const InputContainer(titleText: 'Login'),
+                    const InputContainer(titleText: 'Password'),
+                    const InputContainer(titleText: 'Name'),
+                    const InputContainer(titleText: 'Role'),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    ButtonContainer(
+                      text: 'Register',
+                      color: ColorsUi.green,
+                      onTap: () => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) => const SingUpScreen())),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    GestureDetector(
+                      child: ButtonContainer(
+                        text: 'Sign in',
+                        color: ColorsUi.purple,
                         onTap: () => Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                                builder: (context) => const SingUpScreen())),
+                                builder: (context) => const SignInScreen())),
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      GestureDetector(
-                        child: ButtonContainer(
-                          text: 'Sign in',
-                          color: ColorsUi.purple,
-                          onTap: () => Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const SignInScreen())),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const Spacer(),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

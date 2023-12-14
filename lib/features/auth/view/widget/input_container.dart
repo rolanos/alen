@@ -31,7 +31,10 @@ class InputContainer extends StatelessWidget {
             borderRadius: BorderRadius.circular(45.0),
           ),
           child: TextFormField(
-            decoration: const InputDecoration(border: InputBorder.none),
+            decoration: const InputDecoration(
+              border: InputBorder.none,
+            ),
+            style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
       ],
