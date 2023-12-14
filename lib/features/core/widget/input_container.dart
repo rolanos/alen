@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 class InputContainer extends StatelessWidget {
   final String titleText;
+  final BorderRadiusGeometry? borderRadius;
+  final TextEditingController? controller;
 
-  const InputContainer({super.key, required this.titleText});
+  const InputContainer(
+      {super.key, required this.titleText, this.borderRadius, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +31,14 @@ class InputContainer extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           decoration: BoxDecoration(
             color: ColorsUi.blue,
-            borderRadius: BorderRadius.circular(45.0),
+            borderRadius: borderRadius ?? BorderRadius.circular(45.0),
           ),
           child: TextFormField(
+            readOnly: (controller == null) ? true : false,
             decoration: const InputDecoration(
               border: InputBorder.none,
             ),
-            style: Theme.of(context).textTheme.titleSmall,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
         ),
       ],

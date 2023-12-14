@@ -1,6 +1,9 @@
 import 'package:alen/features/core/color_ui.dart';
 import 'package:alen/features/splash_creen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import 'features/core/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    final GoRouter router = getRouter(context);
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: ColorsUi.scaffoldColor,
@@ -23,7 +27,6 @@ class MyApp extends StatelessWidget {
           titleSmall: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ),
       ),
-      home: const SplashScreen(),
     );
   }
 }

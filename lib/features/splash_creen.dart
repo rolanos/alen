@@ -1,6 +1,7 @@
 import 'package:alen/features/auth/view/sign_in_screen.dart';
 import 'package:alen/features/core/widget/logo.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'core/color_ui.dart';
 
@@ -17,8 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(
       Duration(seconds: 2),
-      () => Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => SignInScreen())),
+      () => context.go('/sign_in'),
     );
   }
 

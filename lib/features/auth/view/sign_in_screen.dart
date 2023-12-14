@@ -1,10 +1,11 @@
 import 'package:alen/features/auth/view/sing_up_screen.dart';
-import 'package:alen/features/auth/view/widget/input_container.dart';
+import 'package:alen/features/core/widget/input_container.dart';
 import 'package:alen/features/core/color_ui.dart';
 import 'package:alen/features/core/widget/logo.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import 'widget/button_container.dart';
+import '../../core/widget/button_container.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -54,9 +55,7 @@ class SignInScreen extends StatelessWidget {
                     ButtonContainer(
                       text: 'Sign in',
                       color: ColorsUi.green,
-                      onTap: () => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => const SignInScreen())),
+                      onTap: () => context.go('/profil'),
                     ),
                     const SizedBox(
                       height: 20,
@@ -64,9 +63,7 @@ class SignInScreen extends StatelessWidget {
                     ButtonContainer(
                       text: 'Register',
                       color: ColorsUi.purple,
-                      onTap: () => Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => const SingUpScreen())),
+                      onTap: () => context.go('/sign_in/sign_up'),
                     ),
                   ],
                 ),
