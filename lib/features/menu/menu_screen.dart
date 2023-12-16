@@ -45,8 +45,8 @@ class _MenuScreenState extends State<MenuScreen> {
                         alignment: Alignment.center,
                         child: SvgPicture.asset(
                           "assets/icons/profil.svg",
-                          width: 60,
-                          height: 60,
+                          width: 45,
+                          height: 45,
                         ),
                       ),
                     ),
@@ -61,28 +61,60 @@ class _MenuScreenState extends State<MenuScreen> {
                         alignment: Alignment.center,
                         child: SvgPicture.asset(
                           "assets/icons/tasks.svg",
-                          width: 60,
-                          height: 60,
+                          width: 45,
+                          height: 45,
                         ),
                       ),
                     ),
                   ),
-                  // Expanded(
-                  //   child: InkWell(
-                  //     onTap: () {
-                  //       widget.navigationShell
-                  //           .goBranch(2, initialLocation: true);
-                  //     },
-                  //     child: Container(
-                  //       alignment: Alignment.center,
-                  //       child: SvgPicture.asset(
-                  //         "assets/icons/profil.svg",
-                  //         width: 60,
-                  //         height: 60,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        widget.navigationShell
+                            .goBranch(2, initialLocation: true);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: SvgPicture.asset(
+                          "assets/icons/notes.svg",
+                          width: 45,
+                          height: 45,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        widget.navigationShell
+                            .goBranch(3, initialLocation: true);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: SvgPicture.asset(
+                          "assets/icons/play.svg",
+                          width: 45,
+                          height: 45,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        widget.navigationShell
+                            .goBranch(4, initialLocation: true);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: SvgPicture.asset(
+                          "assets/icons/qr.svg",
+                          width: 45,
+                          height: 45,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],

@@ -10,6 +10,7 @@ class ArticleScreen extends StatelessWidget {
       child: SafeArea(
         child: ListView(
           shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           children: [
             ArticleContainer(),
             ArticleContainer(),

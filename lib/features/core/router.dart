@@ -1,10 +1,15 @@
+import 'package:alen/features/articles/view/article_selected.dart';
 import 'package:alen/features/auth/view/sign_in_screen.dart';
 import 'package:alen/features/auth/view/sing_up_screen.dart';
+import 'package:alen/features/forum/ask_question_screen.dart';
+import 'package:alen/features/forum/forum_screen.dart';
 import 'package:alen/features/menu/menu_screen.dart';
 import 'package:alen/features/articles/view/articles_screen.dart';
 import 'package:alen/features/profil/view/change_info_screen.dart';
 import 'package:alen/features/profil/view/profil_screen.dart';
+import 'package:alen/features/qr/qr_screen.dart';
 import 'package:alen/features/splash_creen.dart';
+import 'package:alen/features/story/story_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,14 +26,14 @@ GoRouter getRouter(BuildContext context) {
         path: '/sign_in',
         pageBuilder: (context, state) => buildAnimatedRouting(
           state,
-          const SignInScreen(),
+          SignInScreen(),
         ),
         routes: [
           GoRoute(
             path: 'sign_up',
             pageBuilder: (context, state) => buildAnimatedRouting(
               state,
-              const SingUpScreen(),
+              SingUpScreen(),
             ),
           ),
         ],
@@ -70,6 +75,53 @@ GoRouter getRouter(BuildContext context) {
                 name: 'task',
                 pageBuilder: (context, state) =>
                     buildAnimatedRouting(state, const ArticleScreen()),
+                routes: [
+                  GoRoute(
+                    path: 'selected_article',
+                    name: 'selected_article',
+                    pageBuilder: (context, state) =>
+                        buildAnimatedRouting(state, SelectedArticle()),
+                  )
+                ],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/forum',
+                name: 'forum',
+                pageBuilder: (context, state) =>
+                    buildAnimatedRouting(state, const ForumScreen()),
+                routes: [
+                  GoRoute(
+                    path: 'ask_question',
+                    name: 'ask_question',
+                    pageBuilder: (context, state) =>
+                        buildAnimatedRouting(state, AskQuestionScreen()),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/story',
+                pageBuilder: (context, state) => buildAnimatedRouting(
+                  state,
+                  StoryScreen(),
+                ),
+              )
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/qr',
+                name: 'qr',
+                pageBuilder: (context, state) =>
+                    buildAnimatedRouting(state, const QrScreen()),
               ),
             ],
           ),

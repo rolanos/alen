@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "470748637108",
+    "project_id": "alen-application-20-875",
+    "storage_bucket": "alen-application-20-875.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470748637108:android:e5c28493fa4e94b977f4e1",
+        "android_client_info": {
+          "package_name": "com.example.alen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUvAOc0O27t3VkJUcxcmLjyU740e_mMrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

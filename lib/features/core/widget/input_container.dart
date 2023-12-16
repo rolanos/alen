@@ -34,6 +34,7 @@ class InputContainer extends StatelessWidget {
             borderRadius: borderRadius ?? BorderRadius.circular(45.0),
           ),
           child: TextFormField(
+            controller: controller,
             readOnly: (controller == null) ? true : false,
             decoration: const InputDecoration(
               border: InputBorder.none,
