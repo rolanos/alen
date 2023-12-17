@@ -1,6 +1,11 @@
+import 'package:alen/features/articles/domain/entity/article.dart';
 import 'package:flutter/material.dart';
 
 class SelectedArticle extends StatelessWidget {
+  final Article article;
+
+  const SelectedArticle({super.key, required this.article});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +16,7 @@ class SelectedArticle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Theme:',
+                'Theme: ${article.theme}',
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!
@@ -21,7 +26,7 @@ class SelectedArticle extends StatelessWidget {
                 height: 32.0,
               ),
               Text(
-                'Text:',
+                'Text: ${article.text}',
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall!

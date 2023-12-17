@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:alen/features/auth/data/repository/auth_repository_impl.dart';
@@ -40,7 +41,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignUp>((event, emit) async {
       emit(AuthLoading());
       try {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
         await authRepository.signUp(event.email, event.password);
+        await preferences.setString('name', event.name);
+        await preferences.setString('role', event.role);
         emit(
           AuthSuccess(
             email: event.email.trim(),
@@ -52,5 +56,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthError());
       }
     });
+    on<UpdateData>(
+      (event, emit) async {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        await preferences.setString('name', event.name);
+        await preferences.setString('role', event.role);
+        event.completer?.complete();
+      },
+    );
   }
 }

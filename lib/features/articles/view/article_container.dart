@@ -1,15 +1,27 @@
-import 'package:alen/features/core/color_ui.dart';
+import 'package:alen/features/articles/domain/entity/article.dart';
+import 'package:alen/core/color_ui.dart';
+import 'package:alen/features/forum/domain/entity/question.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ArticleContainer extends StatelessWidget {
-  const ArticleContainer({super.key});
+  final Article? article;
+  final Question? question;
+  const ArticleContainer({
+    super.key,
+    this.article,
+    this.question,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.goNamed('selected_article');
+        if (article != null) {
+          context.goNamed('selected_article', extra: article);
+        } else {
+          context.goNamed('select_question', extra: question);
+        }
       },
       child: Container(
         constraints: const BoxConstraints(minHeight: 180),
@@ -26,7 +38,7 @@ class ArticleContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Theme:',
+              'Theme: ${(article == null) ? question!.theme : article!.theme}',
               style: Theme.of(context)
                   .textTheme
                   .titleSmall!
@@ -36,7 +48,7 @@ class ArticleContainer extends StatelessWidget {
               height: 8.0,
             ),
             Text(
-              'Description:',
+              'Description: ${(article == null) ? question!.question : article!.description}',
               style: Theme.of(context)
                   .textTheme
                   .titleSmall!

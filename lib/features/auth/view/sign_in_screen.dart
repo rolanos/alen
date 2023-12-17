@@ -1,13 +1,13 @@
 import 'package:alen/features/auth/view/bloc/auth_bloc.dart';
 import 'package:alen/features/auth/view/sing_up_screen.dart';
-import 'package:alen/features/core/widget/input_container.dart';
-import 'package:alen/features/core/color_ui.dart';
-import 'package:alen/features/core/widget/logo.dart';
+import 'package:alen/core/widget/input_container.dart';
+import 'package:alen/core/color_ui.dart';
+import 'package:alen/core/widget/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/widget/button_container.dart';
+import '../../../core/widget/button_container.dart';
 
 class SignInScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -66,6 +66,7 @@ class SignInScreen extends StatelessWidget {
                       InputContainer(
                         titleText: 'Password',
                         controller: passwordController,
+                        obscure: true,
                       ),
                       const SizedBox(
                         height: 35,

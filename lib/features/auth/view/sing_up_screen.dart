@@ -1,13 +1,13 @@
 import 'package:alen/features/auth/view/bloc/auth_bloc.dart';
 import 'package:alen/features/auth/view/sign_in_screen.dart';
-import 'package:alen/features/core/color_ui.dart';
-import 'package:alen/features/core/widget/logo.dart';
+import 'package:alen/core/color_ui.dart';
+import 'package:alen/core/widget/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/widget/button_container.dart';
-import '../../core/widget/input_container.dart';
+import '../../../core/widget/button_container.dart';
+import '../../../core/widget/input_container.dart';
 
 class SingUpScreen extends StatefulWidget {
   SingUpScreen({super.key});
@@ -21,11 +21,19 @@ class _SingUpScreenState extends State<SingUpScreen> {
 
   late final TextEditingController passwordController;
 
+  late final TextEditingController nameController;
+
+  late final TextEditingController roleController;
+
   @override
   void initState() {
     super.initState();
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
+    if (mounted) {
+      emailController = TextEditingController();
+      passwordController = TextEditingController();
+      nameController = TextEditingController();
+      roleController = TextEditingController();
+    }
   }
 
   @override
@@ -76,9 +84,16 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       InputContainer(
                         titleText: 'Password',
                         controller: passwordController,
+                        obscure: true,
                       ),
-                      const InputContainer(titleText: 'Name'),
-                      const InputContainer(titleText: 'Role'),
+                      InputContainer(
+                        titleText: 'Name',
+                        controller: nameController,
+                      ),
+                      InputContainer(
+                        titleText: 'Role',
+                        controller: roleController,
+                      ),
                       const SizedBox(
                         height: 16,
                       ),
@@ -90,6 +105,8 @@ class _SingUpScreenState extends State<SingUpScreen> {
                             SignUp(
                               email: emailController.text,
                               password: passwordController.text,
+                              name: nameController.text.trim(),
+                              role: roleController.text.trim(),
                             ),
                           );
                         },

@@ -1,4 +1,4 @@
-import 'package:alen/features/core/color_ui.dart';
+import 'package:alen/core/color_ui.dart';
 import 'package:flutter/material.dart';
 
 class LogoWidget extends StatelessWidget {

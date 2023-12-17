@@ -1,4 +1,4 @@
-import 'package:alen/features/core/color_ui.dart';
+import 'package:alen/core/color_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,6 +20,7 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+      resizeToAvoidBottomInset: true,
       bottomNavigationBar: Container(
         height: 80,
         decoration: const BoxDecoration(

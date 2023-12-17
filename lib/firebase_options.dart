@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '470748637108',
     projectId: 'alen-application-20-875',
     authDomain: 'alen-application-20-875.firebaseapp.com',
+    databaseURL: 'https://alen-application-20-875-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'alen-application-20-875.appspot.com',
     measurementId: 'G-GGTDFG8QKS',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:470748637108:android:e5c28493fa4e94b977f4e1',
     messagingSenderId: '470748637108',
     projectId: 'alen-application-20-875',
+    databaseURL: 'https://alen-application-20-875-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'alen-application-20-875.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:470748637108:ios:86ffe0369870d58c77f4e1',
     messagingSenderId: '470748637108',
     projectId: 'alen-application-20-875',
+    databaseURL: 'https://alen-application-20-875-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'alen-application-20-875.appspot.com',
     iosBundleId: 'com.example.alen',
   );
@@ -75,6 +78,7 @@ class DefaultFirebaseOptions {
     appId: '1:470748637108:ios:6a707efecdbd69e977f4e1',
     messagingSenderId: '470748637108',
     projectId: 'alen-application-20-875',
+    databaseURL: 'https://alen-application-20-875-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'alen-application-20-875.appspot.com',
     iosBundleId: 'com.example.alen.RunnerTests',
   );

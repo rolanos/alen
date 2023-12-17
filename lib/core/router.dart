@@ -1,13 +1,18 @@
+import 'package:alen/features/articles/domain/entity/article.dart';
+import 'package:alen/features/articles/view/add_article.dart';
 import 'package:alen/features/articles/view/article_selected.dart';
 import 'package:alen/features/auth/view/sign_in_screen.dart';
 import 'package:alen/features/auth/view/sing_up_screen.dart';
-import 'package:alen/features/forum/ask_question_screen.dart';
-import 'package:alen/features/forum/forum_screen.dart';
+import 'package:alen/features/forum/domain/entity/question.dart';
+import 'package:alen/features/forum/view/add_answer.dart';
+import 'package:alen/features/forum/view/ask_question_screen.dart';
+import 'package:alen/features/forum/view/forum_screen.dart';
+import 'package:alen/features/forum/view/selected_question.dart';
 import 'package:alen/features/menu/menu_screen.dart';
 import 'package:alen/features/articles/view/articles_screen.dart';
 import 'package:alen/features/profil/view/change_info_screen.dart';
 import 'package:alen/features/profil/view/profil_screen.dart';
-import 'package:alen/features/qr/qr_screen.dart';
+import 'package:alen/features/qr/view/qr_screen.dart';
 import 'package:alen/features/splash_creen.dart';
 import 'package:alen/features/story/story_screen.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +66,7 @@ GoRouter getRouter(BuildContext context) {
                     name: 'change_info',
                     pageBuilder: (context, state) => buildAnimatedRouting(
                       state,
-                      const ChangeInfoScreen(),
+                      ChangeInfoScreen(),
                     ),
                   ),
                 ],
@@ -77,11 +82,25 @@ GoRouter getRouter(BuildContext context) {
                     buildAnimatedRouting(state, const ArticleScreen()),
                 routes: [
                   GoRoute(
-                    path: 'selected_article',
-                    name: 'selected_article',
-                    pageBuilder: (context, state) =>
-                        buildAnimatedRouting(state, SelectedArticle()),
-                  )
+                      path: 'selected_article',
+                      name: 'selected_article',
+                      pageBuilder: (context, state) {
+                        return buildAnimatedRouting(
+                          state,
+                          SelectedArticle(
+                            article: state.extra as Article,
+                          ),
+                        );
+                      }),
+                  GoRoute(
+                      path: 'add_article',
+                      name: 'add_article',
+                      pageBuilder: (context, state) {
+                        return buildAnimatedRouting(
+                          state,
+                          AddArticle(),
+                        );
+                      })
                 ],
               ),
             ],
@@ -94,6 +113,27 @@ GoRouter getRouter(BuildContext context) {
                 pageBuilder: (context, state) =>
                     buildAnimatedRouting(state, const ForumScreen()),
                 routes: [
+                  GoRoute(
+                    path: 'select_question',
+                    name: 'select_question',
+                    routes: [
+                      GoRoute(
+                        path: 'answer_question',
+                        name: 'answer_question',
+                        pageBuilder: (context, state) => buildAnimatedRouting(
+                          state,
+                          AddAnswerScreen(
+                            question: state.extra as Question,
+                          ),
+                        ),
+                      ),
+                    ],
+                    pageBuilder: (context, state) => buildAnimatedRouting(
+                        state,
+                        SelectedQuestion(
+                          question: state.extra as Question,
+                        )),
+                  ),
                   GoRoute(
                     path: 'ask_question',
                     name: 'ask_question',
@@ -121,7 +161,7 @@ GoRouter getRouter(BuildContext context) {
                 path: '/qr',
                 name: 'qr',
                 pageBuilder: (context, state) =>
-                    buildAnimatedRouting(state, const QrScreen()),
+                    buildAnimatedRouting(state, QrScreen()),
               ),
             ],
           ),
