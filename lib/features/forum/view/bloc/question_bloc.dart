@@ -14,7 +14,7 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
   QuestionBloc() : super(QuestionInitial()) {
     on<GetAllQuestions>((event, emit) async {
       try {
-        List<Question> articles = await dataBaseService.getAllQuestions();
+        List<Question?> articles = await dataBaseService.getAllQuestions();
         emit(QuestionInitial(questions: articles));
       } catch (e) {
         log(e.toString());

@@ -21,22 +21,24 @@ class DataBaseService {
     }
   }
 
-  Future<List<Article>> getAllArticles() async {
+  Future<List<Article?>> getAllArticles() async {
     try {
       final response = await ref.child('articles').get();
-      if (response.value is Map<String, dynamic>) {
-        Map<String, dynamic> buffer = response.value as Map<String, dynamic>;
-        return List.generate(
-            buffer.length,
-            (index) =>
-                ArticleApi.fromMap(buffer[index] as Map<String, dynamic>));
-      }
       if (response.value is List<dynamic>) {
         List<dynamic> buffer = response.value as List<dynamic>;
-        return List.generate(
-            buffer.length,
-            (index) =>
-                ArticleApi.fromMap(buffer[index] as Map<String, dynamic>));
+        List<Article?> res = List.generate(
+          buffer.length,
+          (index) {
+            if (buffer[index] == null) {
+              return null;
+            } else {
+              ArticleApi.fromMap((buffer[index] as Map<Object?, Object?>)
+                  .cast<String, dynamic>());
+            }
+          },
+        );
+
+        return res..removeWhere((element) => element == null);
       }
       if (response.value is Map<Object?, Object?>) {
         Map<Object?, Object?> buffered =
@@ -74,9 +76,9 @@ class DataBaseService {
     }
   }
 
-  Future<List<Question>> getAllQuestions() async {
+  Future<List<Question?>> getAllQuestions() async {
     try {
-      final response = await ref.child('questions/').get();
+      final response = await ref.child('questions').get();
       if (response.value is Map<String, dynamic>) {
         Map<String, dynamic> buffer = response.value as Map<String, dynamic>;
         return List.generate(
@@ -86,10 +88,19 @@ class DataBaseService {
       }
       if (response.value is List<dynamic>) {
         List<dynamic> buffer = response.value as List<dynamic>;
-        return List.generate(
-            buffer.length,
-            (index) =>
-                QuestionApi.fromMap(buffer[index] as Map<String, dynamic>));
+        List<Question?> res = List.generate(
+          buffer.length,
+          (index) {
+            if (buffer[index] == null) {
+              return null;
+            } else {
+              QuestionApi.fromMap((buffer[index] as Map<Object?, Object?>)
+                  .cast<String, dynamic>());
+            }
+          },
+        );
+
+        return res..removeWhere((element) => element == null);
       }
       if (response.value is Map<Object?, Object?>) {
         Map<Object?, Object?> buffered =

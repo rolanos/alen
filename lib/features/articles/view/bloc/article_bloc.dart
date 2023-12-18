@@ -14,7 +14,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
   ArticleBloc() : super(ArticleInitial()) {
     on<GetAllArticle>((event, emit) async {
       try {
-        List<Article> articles = await dataBaseService.getAllArticles();
+        List<Article?> articles = await dataBaseService.getAllArticles();
         emit(ArticleInitial(articles: articles));
       } catch (e) {
         log(e.toString());

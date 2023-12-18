@@ -9,11 +9,15 @@ class ArticleApi {
     };
   }
 
-  static Article fromMap(Map<String, dynamic> map) {
+  static Article? fromMap(Map<String, dynamic>? map) {
+    if (map == null) {
+      return null;
+    }
     return Article(
-      theme: map['theme'] as String,
-      description: map['description'] as String,
-      text: map['text'] as String,
+      theme: map['theme'] != null ? map['theme'] as String : "",
+      description:
+          map['description'] != null ? map['description'] as String : "",
+      text: map['text'] != null ? map['text'] as String : "",
     );
   }
 }

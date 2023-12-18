@@ -3,7 +3,7 @@ part of 'question_bloc.dart';
 abstract class QuestionState {}
 
 class QuestionInitial extends QuestionState {
-  final List<Question> questions;
+  final List<Question?> questions;
 
   QuestionInitial({this.questions = const []});
 }
