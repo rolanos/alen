@@ -2,6 +2,7 @@ import 'package:alen/features/articles/view/bloc/article_bloc.dart';
 import 'package:alen/core/color_ui.dart';
 import 'package:alen/core/widget/button_container.dart';
 import 'package:alen/core/widget/input_container.dart';
+import 'package:alen/features/auth/view/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -73,7 +74,18 @@ class _ProfilScreenState extends State<ProfilScreen> {
                     ButtonContainer(
                         text: 'Change info',
                         color: ColorsUi.green,
-                        onTap: () => context.goNamed('change_info'))
+                        onTap: () => context.goNamed('change_info')),
+                    const SizedBox(
+                      height: 24.0,
+                    ),
+                    ButtonContainer(
+                      text: 'Log Out',
+                      color: ColorsUi.green,
+                      onTap: () {
+                        BlocProvider.of<AuthBloc>(context).add(LogOut());
+                        context.goNamed('sign_in');
+                      },
+                    ),
                   ],
                 ),
               ),

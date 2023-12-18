@@ -32,3 +32,5 @@ class UpdateData extends AuthEvent {
 
   UpdateData({required this.name, required this.role, this.completer});
 }
+
+class LogOut extends AuthEvent {}

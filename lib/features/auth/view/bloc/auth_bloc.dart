@@ -64,5 +64,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         event.completer?.complete();
       },
     );
+    on<LogOut>(
+      (event, emit) async {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        await preferences.remove('email');
+        await preferences.remove('password');
+        emit(AuthEmpty());
+      },
+    );
   }
 }

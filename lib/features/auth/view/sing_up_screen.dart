@@ -25,6 +25,10 @@ class _SingUpScreenState extends State<SingUpScreen> {
 
   late final TextEditingController roleController;
 
+  List<String> dropDownValues = ["Студент", "Учитель", "Гость"];
+
+  String? dropValue;
+
   @override
   void initState() {
     super.initState();
@@ -90,9 +94,50 @@ class _SingUpScreenState extends State<SingUpScreen> {
                         titleText: 'Name',
                         controller: nameController,
                       ),
-                      InputContainer(
-                        titleText: 'Role',
-                        controller: roleController,
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 13.0),
+                        child: Text(
+                          "Role",
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(color: Colors.white),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 0),
+                        decoration: BoxDecoration(
+                          color: ColorsUi.blue,
+                          borderRadius: BorderRadius.circular(45.0),
+                        ),
+                        child: DropdownButton(
+                          value: dropValue,
+                          items: List<DropdownMenuItem<String>>.generate(
+                            dropDownValues.length,
+                            (index) => DropdownMenuItem<String>(
+                              value: dropDownValues[index],
+                              child: Text(
+                                dropDownValues[index],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          onChanged: (val) {
+                            setState(() {
+                              dropValue = val ?? dropDownValues.first;
+                            });
+                          },
+                        ),
                       ),
                       const SizedBox(
                         height: 16,
@@ -106,7 +151,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                               email: emailController.text,
                               password: passwordController.text,
                               name: nameController.text.trim(),
-                              role: roleController.text.trim(),
+                              role: dropValue ?? dropDownValues.first,
                             ),
                           );
                         },

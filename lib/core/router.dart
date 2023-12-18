@@ -30,6 +30,7 @@ GoRouter getRouter(BuildContext context) {
       ),
       GoRoute(
         path: '/sign_in',
+        name: 'sign_in',
         pageBuilder: (context, state) => buildAnimatedRouting(
           state,
           SignInScreen(),
