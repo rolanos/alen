@@ -12,6 +12,7 @@ import 'package:alen/features/menu/menu_screen.dart';
 import 'package:alen/features/articles/view/articles_screen.dart';
 import 'package:alen/features/profil/view/change_info_screen.dart';
 import 'package:alen/features/profil/view/profil_screen.dart';
+import 'package:alen/features/qr/qr_view_screen.dart';
 import 'package:alen/features/qr/view/qr_screen.dart';
 import 'package:alen/features/splash_creen.dart';
 import 'package:alen/features/story/story_screen.dart';
@@ -160,6 +161,14 @@ GoRouter getRouter(BuildContext context) {
               GoRoute(
                 path: '/qr',
                 name: 'qr',
+                routes: [
+                  GoRoute(
+                    path: 'qr_scan',
+                    name: 'qr_scan',
+                    pageBuilder: (context, state) =>
+                        buildAnimatedRouting(state, QrViewScreeen()),
+                  )
+                ],
                 pageBuilder: (context, state) =>
                     buildAnimatedRouting(state, QrScreen()),
               ),

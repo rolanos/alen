@@ -5,19 +5,31 @@ import 'package:alen/features/forum/view/bloc/question_bloc.dart';
 import 'package:alen/features/qr/view/bloc/qr_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class QrScreen extends StatelessWidget {
-  final TextEditingController qrController = TextEditingController();
-
+class QrScreen extends StatefulWidget {
   QrScreen({super.key});
+
+  @override
+  State<QrScreen> createState() => _QrScreenState();
+}
+
+class _QrScreenState extends State<QrScreen> {
+  final TextEditingController qrController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: BlocBuilder<QrBloc, QrState>(
+      body: BlocConsumer<QrBloc, QrState>(
+        listener: (context, state) {
+          if (state is QrState) {
+            qrController.text = state.qr ?? "";
+            setState(() {});
+          }
+        },
         builder: (context, state) {
           return SingleChildScrollView(
             child: SafeArea(
@@ -35,7 +47,9 @@ class QrScreen extends StatelessWidget {
                       child: ButtonContainer(
                         text: 'Scan QR-code',
                         color: ColorsUi.green,
-                        onTap: () {},
+                        onTap: () {
+                          context.goNamed('qr_scan');
+                        },
                       ),
                     ),
                     Spacer(
